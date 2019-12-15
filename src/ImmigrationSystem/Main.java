@@ -13,8 +13,8 @@ public class Main {
 		System.out.println("WELCOME TO THE IMMIGRATION APPOINTMENT SYSTEM");
 		System.out.println("");
 
-        Menu menu = new Menu();
-        menu.mainMenu();
+		Menu menu = new Menu();
+		menu.mainMenu();
 
 	}
 
