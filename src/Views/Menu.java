@@ -15,6 +15,7 @@ public class Menu {
     private Scanner inputsc = new Scanner(System.in);
     private int id;
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    private Person data;
 
     public void mainMenu() throws IOException {
 
@@ -50,7 +51,10 @@ public class Menu {
                 deleteMenu();
                 break;
             case 5:
-                list.updatePerson();
+                System.out.println("Please type in the id number to be updated");
+                id = inputsc.nextInt();
+                list.updatePersonData(id);
+                mainMenu();
                 break;
             case 6:
                 System.exit(0);
@@ -73,6 +77,8 @@ public class Menu {
                 System.out.println("Type in the number of people you want to delete from the end of the list");
                 int amount = inputsc.nextInt();
                 list.deleteFromEnd(amount);
+                list.printList();
+                mainMenu();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + answer);
@@ -91,6 +97,20 @@ public class Menu {
             default: return null;
         }
     }
+
+//    public void updateMenu() throws IOException {
+//        System.out.println("");
+//        System.out.println("Please type in the First Name");
+//        String name = input.readLine();
+//        current.getData()
+//        System.out.println("Please type in the Family Name");
+//        String surname = input.readLine();
+//        System.out.println("Please type in the date of arrival");
+//        String date = input.readLine();
+//        System.out.println("Please type in the passport number");
+//        String passport = input.readLine();
+//
+//    }
 
     public void createNodeMenu() throws IOException {
         System.out.println("");
@@ -115,7 +135,7 @@ public class Menu {
         list.create(newNode);
         list.printList();
         mainMenu();
-        }
-
     }
+
+}
 

@@ -3,7 +3,7 @@ package ImmigrationSystem;
 import java.util.Scanner;
 
 public class Node <E> {
-	
+
 	// Attributes of a generic Node
 	private Node next;
 	private Node previous;
@@ -24,9 +24,9 @@ public class Node <E> {
 		this.data = data;
 		this.priorityLevel = priority;
 	}
-	
+
 	///////GETTERS AND SETTERS///////
-	
+
 	public Priority getPriorityLevel() {
 		return priorityLevel;
 	}
@@ -57,5 +57,9 @@ public class Node <E> {
 
 	public int getId() {
 		return data.getId();
+	}
+
+	public void setData(Person data) {
+		this.data = data;
 	}
 }

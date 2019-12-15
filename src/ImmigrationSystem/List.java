@@ -1,5 +1,8 @@
 package ImmigrationSystem;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class List <L> {
@@ -12,6 +15,8 @@ public class List <L> {
 	private Node lastMedium;
 	private Node current;
 	Scanner scanner = new Scanner(System.in);
+	private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
 
 	// Constructor of a List
 	public List() {
@@ -109,6 +114,26 @@ public class List <L> {
 		return null;
 	}
 
+	public void updatePersonData(int id) throws IOException {
+		Node current = searchById(id);
+		System.out.println("");
+		System.out.println("Please type in the First Name");
+		String name = input.readLine();
+		current.getData().setFirstName(name);
+		System.out.println("Please type in the Family Name");
+		String surname = input.readLine();
+		current.getData().setLastName(surname);
+		System.out.println("Please type in the date of arrival");
+		String date = input.readLine();
+		current.getData().setDateOfArrival(date);
+		System.out.println("Please type in the passport number");
+		String passport = input.readLine();
+		current.getData().setPassportNumber(passport);
+		System.out.println(current);
+		printList();
+
+	}
+
 	//remove from the end
 	public void deleteFromEnd(int amount) {
 
@@ -116,15 +141,15 @@ public class List <L> {
 			return;
 		Node currentNode = this.last;
 
-		while(amount>0||size>0){
-            System.out.println(currentNode);
+		while(amount>0&&size>0){
+			System.out.println(currentNode);
 			if(this.first == currentNode)
-                this.first = null;
-                this.last = currentNode.getPrevious();
-                if(this.last!=null)
-                    this.last.setNext(null);
-                    currentNode.setPrevious(null);
-                    currentNode = this.last;
+				this.first = null;
+			this.last = currentNode.getPrevious();
+			if(this.last!=null)
+				this.last.setNext(null);
+			currentNode.setPrevious(null);
+			currentNode = this.last;
 
 			amount--;
 			size--;

@@ -1,7 +1,7 @@
 package ImmigrationSystem;
 
 public class Person {
-	
+
 	// Atributes of the Person
 	private String firstName;
 	private String lastName;
@@ -9,7 +9,7 @@ public class Person {
 	private String passportNumber;
 	private int id;
 	private static int IdCounter = 0;
-	
+
 	// Person's constructor
 	public Person(String firstName, String lastName, String dateOfArrival, String passportNumber) {
 		this.firstName = firstName;
@@ -18,9 +18,12 @@ public class Person {
 		this.passportNumber = passportNumber;
 		id = ++IdCounter;
 	}
-	
+	public Person(){
+
+	}
+
 	///////GETTERS AND SETTERS///////
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
