@@ -9,23 +9,20 @@ public class Node <E> {
 	private Node previous;
 	private Person data;
 	private Priority priorityLevel;
-	private String level;
-
 
 	// Constructor of a Node
+
+	public Node (Person data, Priority priority) {
+		this.priorityLevel = priority;
+		this.data = data;
+	}
+
 	public Node (Node next, Node previous, Person data, Priority priority) {
 
 		this.next = next;
 		this.previous = previous;
 		this.data = data;
 		this.priorityLevel = priority;
-	}
-
-	public Node (Person data, String priority) {
-		level = priorityLevel.getLevel(priority);
-		priorityLevel = level;
-		this.data = data;
-
 	}
 	
 	///////GETTERS AND SETTERS///////

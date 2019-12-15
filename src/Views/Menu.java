@@ -2,6 +2,9 @@ package Views;
 
 import ImmigrationSystem.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Menu {
@@ -9,12 +12,11 @@ public class Menu {
     private int selection;
     private Node node;
     private List list = ListCreator.getListInstance();
-    private Scanner input = new Scanner(System.in);
+    private Scanner inputsc = new Scanner(System.in);
     private int id;
-    private Priority priority;
-    private String level;
+    private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-    public void mainMenu() {
+    public void mainMenu() throws IOException {
 
         /***************************************************/
 
@@ -28,12 +30,12 @@ public class Menu {
         System.out.println("5 - Update details of a person");
         System.out.println("6 - Exit program");
         System.out.println("");
-        selection = input.nextInt();
+        selection = inputsc.nextInt();
 
         switch (selection){
             case 1:
                 System.out.println("Please type in the id number");
-                id = input.nextInt();
+                id = inputsc.nextInt();
                 System.out.println(list.searchById(id).getData());
                 mainMenu();
                 break;
@@ -45,7 +47,7 @@ public class Menu {
                 createNodeMenu();
                 break;
             case 4:
-                list.delete(id);
+                deleteMenu();
                 break;
             case 5:
                 list.updatePerson();
@@ -57,27 +59,63 @@ public class Menu {
         }
     }
 
-    public void createNodeMenu(){
-        //level = priority.getLevel();
+    public void deleteMenu() throws IOException {
+        System.out.println("Want to delete a specific id? 'Y' or 'N'");
+        String answer = input.readLine().toLowerCase();
+        switch (answer){
+            case "y":
+                System.out.println("Type in the id number of the person to be deleted");
+                int id = inputsc.nextInt();
+                list.deleteById(id);
+                mainMenu();
+                break;
+            case "n":
+                System.out.println("Type in the number of people you want to delete from the end of the list");
+                int amount = inputsc.nextInt();
+                list.deleteFromEnd(amount);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + answer);
+        }
+    }
+
+    public Priority getEnumFromString(String string){
+        String compare = string.toLowerCase();
+        switch (compare){
+            case "low":
+                return Priority.LOW;
+            case "medium":
+                return Priority.MEDIUM;
+            case "high":
+                return Priority.HIGH;
+            default: return null;
+        }
+    }
+
+    public void createNodeMenu() throws IOException {
         System.out.println("");
         System.out.println("Please type in the First Name");
-        String name = input.nextLine();
+        String name = input.readLine();
         System.out.println("Please type in the Family Name");
-        String surname = input.nextLine();
+        String surname = input.readLine();
         System.out.println("Please type in the date of arrival");
-        String date = input.next();
+        String date = input.readLine();
         System.out.println("Please type in the passport number");
-        String passport = input.next();
+        String passport = input.readLine();
 
         Person data = new Person(name, surname, date, passport);
         System.out.println((data));
 
         System.out.println("Please type in the priority level");
-        level = input.nextLine();
+        String level = input.readLine();
+        Priority priority = getEnumFromString(level);
+        System.out.println(priority);
 
-        Node newNode = new Node(data, level);
-        list.create(node);
+        Node newNode = new Node(data, priority);
+        list.create(newNode);
         list.printList();
+        mainMenu();
+        }
 
     }
-}
+

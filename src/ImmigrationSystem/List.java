@@ -108,26 +108,6 @@ public class List <L> {
 		}
 		return null;
 	}
-//
-	public void delete(int id) {
-
-			current = searchById(id);
-
-//from the view you ask the user which delete method the user wants to use
-		//you can create a switch to check the option and call the respective method
-
-			do {
-				if (current.getData().getId() == id) {
-					if (current.getData() == this.getFirst().getData()) ;
-					deleteFromFront();
-				}
-				if (current.getData() == this.getLast().getData()) {
-					deleteFromEnd(3);
-				} else {
-				deleteById(id);
-				}
-			} while (current != null);
-		}
 
 	//remove from the end
 	public void deleteFromEnd(int amount) {
@@ -154,41 +134,18 @@ public class List <L> {
 		size--;
 	}
 
-	//remove from the front
-	public void deleteFromFront() {
-
-        if(size==0)
-            return;
-        Node currentNode = this.first;
-
-            if(this.last == currentNode) {
-				this.last = null;
-				this.first = currentNode.getNext();
-				if (this.first != null)
-					this.first.setPrevious(null);
-				currentNode.setNext(null);
-				currentNode = this.first;
-
-            size--;
-        }
-        System.out.println(this.getFirst());
-        System.out.println(this.getFirst().getNext());
-		this.getFirst().getNext().setPrevious(null);
-		this.first = this.first.getNext();
-
-		size--;
-	}
-
 	public boolean deleteById(int id) {
 
 		Node current = searchById(id);
 		if (current != null) {
 			current.getNext().setPrevious(current.getPrevious());
 			current.getPrevious().setNext(current.getNext());
+			printList();
 			return true;
 		}
 		return false;
 	}
+
 	///////GETTERS AND SETTERS///////
 
 	public Node getFirst() {

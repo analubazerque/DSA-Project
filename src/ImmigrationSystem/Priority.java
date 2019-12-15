@@ -16,9 +16,14 @@ public enum Priority {
 		this.level = level;
 	}
 
-	public String getLevel(String level) {
-		this.level = level;
-		return level;
-	}
+//	public String getLevel(String level) {
+//		this.level = level;
+//		return level;
+//	}
+//
+//	public Priority getLevel(String priotity) {
+//		this.level = priotity;
+//		return level;
+//	}
 
 }
