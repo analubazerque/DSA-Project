@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu extends Validations{
 
     private int selection;
     private Node node;
@@ -16,11 +16,11 @@ public class Menu {
     private int id;
     private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     private Person data;
+    Validations valid = new Validations();
 
-    public void mainMenu() throws IOException {
+    public void mainMenu() throws Exception {
 
         System.out.println("-------------------------\n");
-        System.out.println("");
         System.out.println("Please select an option from 1 to 5");
         System.out.println("1 - Search for a person by id number");
         System.out.println("2 - See all the people in the list");
@@ -35,6 +35,7 @@ public class Menu {
             case 1:
                 System.out.println("Please type in the id number");
                 id = inputsc.nextInt();
+
                 System.out.println(list.searchById(id).getData());
                 mainMenu();
                 break;
@@ -61,7 +62,7 @@ public class Menu {
         }
     }
 
-    public void deleteMenu() throws IOException {
+    public void deleteMenu() throws Exception {
         System.out.println("Want to delete a specific id? 'Y' or 'N'");
         String answer = input.readLine().toLowerCase();
         switch (answer){
@@ -96,14 +97,17 @@ public class Menu {
         }
     }
 
-    public void createNodeMenu() throws IOException {
+    public void createNodeMenu() throws Exception {
         System.out.println("");
         System.out.println("Please type in the First Name");
         String name = input.readLine();
+        valid.firstName(name);
         System.out.println("Please type in the Family Name");
         String surname = input.readLine();
+        valid.lastName(surname);
         System.out.println("Please type in the date of arrival");
         String date = input.readLine();
+        valid.validateDate(date);
         System.out.println("Please type in the passport number");
         String passport = input.readLine();
 

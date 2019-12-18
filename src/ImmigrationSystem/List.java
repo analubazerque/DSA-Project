@@ -19,6 +19,7 @@ public class List <L> {
 	private int position = 1;
 	private BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 	private Menu menu;
+	Validations valid = new Validations();
 
 
 	// Constructor of a List
@@ -135,12 +136,15 @@ public class List <L> {
 		System.out.println("");
 		System.out.println("Please type in the First Name");
 		String name = input.readLine();
+		valid.firstName(name);
 		current.getData().setFirstName(name);
 		System.out.println("Please type in the Family Name");
 		String surname = input.readLine();
+		valid.lastName(surname);
 		current.getData().setLastName(surname);
 		System.out.println("Please type in the date of arrival");
 		String date = input.readLine();
+		valid.validateDate(date);
 		current.getData().setDateOfArrival(date);
 		System.out.println("Please type in the passport number");
 		String passport = input.readLine();
