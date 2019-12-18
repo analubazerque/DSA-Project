@@ -25,7 +25,7 @@ public class Node <E> {
 		this.priorityLevel = priority;
 	}
 
-	///////GETTERS AND SETTERS///////
+	//////////////////////////////GETTERS AND SETTERS/////////////////////////////////////
 
 	public Priority getPriorityLevel() {
 		return priorityLevel;

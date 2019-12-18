@@ -19,8 +19,6 @@ public class Menu {
 
     public void mainMenu() throws IOException {
 
-        /***************************************************/
-
         System.out.println("-------------------------\n");
         System.out.println("");
         System.out.println("Please select an option from 1 to 5");
@@ -98,20 +96,6 @@ public class Menu {
         }
     }
 
-//    public void updateMenu() throws IOException {
-//        System.out.println("");
-//        System.out.println("Please type in the First Name");
-//        String name = input.readLine();
-//        current.getData()
-//        System.out.println("Please type in the Family Name");
-//        String surname = input.readLine();
-//        System.out.println("Please type in the date of arrival");
-//        String date = input.readLine();
-//        System.out.println("Please type in the passport number");
-//        String passport = input.readLine();
-//
-//    }
-
     public void createNodeMenu() throws IOException {
         System.out.println("");
         System.out.println("Please type in the First Name");
@@ -134,8 +118,10 @@ public class Menu {
         Node newNode = new Node(data, priority);
         list.create(newNode);
         list.printList();
-        mainMenu();
+        mainMenu(); //calls back the main menu
     }
+
+
 
 }
 

@@ -22,7 +22,7 @@ public class Person {
 
 	}
 
-	///////GETTERS AND SETTERS///////
+	////////////////////////////////////GETTERS AND SETTERS//////////////////////////////////////////////
 
 	public String getFirstName() {
 		return firstName;

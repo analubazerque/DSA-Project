@@ -1,5 +1,7 @@
 package ImmigrationSystem;
 
+import java.io.IOException;
+
 public class ListCreator {
     static List list = new List<Node>();
     Node node;
@@ -27,12 +29,18 @@ public class ListCreator {
         Person person6 = new Person("Cleidevania", "Bazerque", "29/12/2017", "36477777");
         Node node6 = new Node( person6, Priority.HIGH);
 
-        list.create(node1);
+        try {
+            list.create(node1);
+
         list.create(node2);
         list.create(node3);
         list.create(node4);
         list.create(node5);
         list.create(node6);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
