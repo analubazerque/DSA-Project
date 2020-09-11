@@ -1,4 +1,4 @@
 # DSA-Project
 
 Title: DSA-Project
-Author: Ana Luiza Bazerque
+Author: Ana Luiza Bobsin Bazerque
