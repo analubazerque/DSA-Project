@@ -20,7 +20,7 @@ public class Menu extends Validations{
 
     public void mainMenu() throws Exception {
 
-        System.out.println("-------------------------\n");
+        System.out.println("--------------------------------\n");
         System.out.println("Please select an option from 1 to 5");
         System.out.println("1 - Search for a person by id number");
         System.out.println("2 - See all the people in the list");
